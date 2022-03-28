@@ -1,0 +1,13 @@
+.homes-guests{
+    position: relative;
+    background: #EAF0F9;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    order: 2;
+}
+
+.section-title{
+    padding-top: 24px;
+    padding-bottom: 8px;
+}
