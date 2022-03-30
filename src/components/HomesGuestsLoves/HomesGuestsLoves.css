@@ -1,13 +1,16 @@
 .homes-guests{
-    position: relative;
+    /*position: relative;*/
     background: #EAF0F9;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
+    /*flex-wrap: wrap;*/
     justify-content: center;
-    order: 2;
-}
+    /*order: 2;*/
 
-.section-title{
+}
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
     padding-top: 24px;
     padding-bottom: 8px;
 }
