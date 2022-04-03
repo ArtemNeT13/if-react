@@ -1,8 +1,8 @@
 .container-slider {
     position: relative;
     display: flex;
-    margin-top: 105px;
     padding-bottom: 120px;
+    max-width: 1240px;
 }
 .container-slider p{
     text-align: left;
@@ -15,16 +15,11 @@
 .container-slider span{
     color: #BFBFBF;
 }
-@media screen and (max-width: 700px){
-    .container-slider {
-        margin: 100px 10px 0;
-    }
-}
+
 .slide {
     width: 25%;
-    /*height: 100%;*/
-    /*position: absolute;*/
-    opacity: 1;
+    height: 100%;
+    margin: 0 8px;
     transition: opacity ease-in-out 0.4s;
 }
 .slide img {
@@ -56,12 +51,12 @@
 }
 .prev {
     top: 25%;
-    left: -10px;
-    transform: translateY(-60%);
+    left: -15px;
+    transform: translateY(-50%);
 }
 .next {
     position: absolute;
     top: 25%;
-    right: -10px;
-    transform: translateY(-60%);
+    right: -35px;
+    transform: translateY(-50%);
 }
