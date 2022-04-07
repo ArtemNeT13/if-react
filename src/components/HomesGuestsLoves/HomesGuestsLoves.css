@@ -1,0 +1,15 @@
+.homes-guests {
+    min-width: 1240px;
+    background: #EAF0F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title h2{
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding-top: 120px;
+    margin-bottom: 106px;
+}

@@ -15,3 +15,22 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// class Text extends React.Component {
+//     constructor(props) {
+//         super(props);
+//
+//         this.state = {};
+//     }
+//
+//
+//     render() {
+//         const { label } = this.props;
+//         return <div>{label}</div>
+//     }
+// }
+//
+//
+//
+//
+// export default Text;
