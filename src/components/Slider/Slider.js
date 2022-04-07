@@ -5,13 +5,12 @@ import BtnSlider from './BtnSlider';
 import SliderCard from './SliderCard/SliderCard';
 
 export default function Slider () {
-
     const picturesOnView = 4;
     const [slideIndex, setSlideIndex] = useState(0)
     const nextSlide = () => {
         if (slideIndex < data.length - picturesOnView) {
             setSlideIndex(slideIndex + 1)
-        };
+        }
     };
 
     const prevSlide = () => {
@@ -23,16 +22,16 @@ export default function Slider () {
     return (
         <div className="container-slider">
             {
-                data.slice(slideIndex, picturesOnView + slideIndex).map((obj, index) => {
+                data.slice(slideIndex, picturesOnView + slideIndex).map((obj) => {
                 return (
-                    <div className={"slide"} key = {index}>
-                        <SliderCard {...obj}/>
+                    <div className="slide" >
+                        <SliderCard {...obj} />
                     </div>
                 )
                 })
             }
-            <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
+            <BtnSlider moveSlide={nextSlide} direction="next" />
+            <BtnSlider moveSlide={prevSlide} direction="prev"/>
         </div>
     )
 };
