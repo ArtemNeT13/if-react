@@ -11,7 +11,7 @@ export default function BtnSlider({ direction, moveSlide }) {
         >
             <img
                 src={direction === "next" ? rightArrow : leftArrow}
-                alt={''}
+                alt={direction === "next" ? 'right arrow' : 'left arrow'}
             />
         </button>
     );
