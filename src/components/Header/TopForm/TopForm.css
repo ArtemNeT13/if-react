@@ -1,0 +1,249 @@
+.header-search{
+    background-color: #FFFFFF;
+    border: 3px solid #F3F3F4;
+    border-radius: 8px;
+    margin-bottom: 120px;
+    width: 1230px;
+    height: 64px;
+    font-size: 18px;
+    display: flex;
+}
+.search-block{
+    position: relative;
+    width: 100%;
+}
+.search-block:hover .label-block{
+    position: absolute;
+    color: #FFFFFF;
+    top: -62px;
+}
+.search-block:hover .input-block{
+    display: flex;
+}
+.label-block{
+    color: #383838;
+    padding: 18px 24px;
+}
+.label-block image{
+    display: none;
+}
+.input-block{
+    display: none;
+}
+.input-block input {
+    font-size: 18px;
+    color: #383838;
+    padding: 18px 24px;
+    width: 100%;
+    height: 64px;
+    margin-top: -3px;
+    margin-left: -3px;
+    border-radius: 8px;
+    border: 3px solid #F5BD41;
+    outline:none;
+}
+.search-data{
+    position: relative;
+}
+.search-data:hover .data-label{
+    position: absolute;
+    color: #FFFFFF;
+    top: -62px;
+    left: -24px;
+}
+.search-data:hover .data-block{
+    display: flex;
+}
+.data-label{
+    width: 264px;
+    color: #383838;
+    text-align: center;
+    padding-top: 18px;
+}
+.data-label-2{
+    display: none;
+}
+.data-block{
+    display: none;
+}
+.data-block-in{
+    display: none;
+}
+.data-block input{
+    width: 50%;
+    font-size: 18px;
+    color: #383838;
+    border: none;
+    outline:none;
+}
+.data-block{
+    padding: 0 24px;
+    width: 264px;
+    height: 64px;
+    margin-top: -3px;
+    margin-left: -3px;
+    border-radius: 8px;
+    border: 3px solid #F5BD41;
+}
+.data-block span{
+    color: #383838;
+    padding-top: 18px;
+}
+.filter{
+    width: 314px;
+    color: #383838;
+    padding: 22px 24px;
+}
+.filter-block{
+    position: relative;
+}
+.filter-block:hover .filter-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter-block:hover .filter-input-parameters{
+    display: block;
+}
+
+.filter-block:hover .filter-label{
+    display: none;
+}
+
+.filter-label{
+    width: 314px;
+    color: #383838;
+    padding-left: 24px;
+    padding-top: 18px;
+}
+.filter-input{
+    display: none;
+}
+.filter-block input{
+    width: 33%;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    color: #383838;
+    border: none;
+    outline:none;
+}
+.filter-children{
+    width: 82px;
+}
+.filter-input-2{
+    display: none;
+}
+.filter-input{
+    padding: 0 24px;
+    width: 314px;
+    height: 64px;
+    margin-top: -3px;
+    margin-left: -3px;
+    border-radius: 8px;
+    border: 3px solid #F5BD41;
+}
+
+
+
+.filter-input-parameters{
+    display: none;
+    width: 259px;
+    height: 158px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    border-radius: 8px;
+}
+
+.filter-values{
+    display: block;
+    padding-top: 10px;
+}
+.filter-values-members{
+    display: flex;
+    height: 33.33%;
+    margin: 12px 22px;
+    align-items: center;
+    justify-content: space-between;
+}
+.filter-values input{
+    width: 48px;
+}
+.filter-values p{
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    width: 50%;
+}
+.filter-values-members div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-value-active{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: #3077C6;
+    border: solid #3077C6 1px;
+}
+.color-value-inactive{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: #CECECE;
+    border: solid #CECECE 1px;
+}
+.parameters-children-age{
+    display: none;
+    padding-bottom: 18px;
+    width: 259px;
+    min-height: 98px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.parameters-children-age p{
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+    padding: 6px 22px 12px 19px;
+}
+.parameters-children-age select{
+    width: 99px;
+    height: 30px;
+    padding-left: 3px;
+    margin: 4px 4px 4px 19px;
+    font-size: 12px;
+    font-weight: 400;
+    border-color: #3077C6;
+
+}
+.filter-block span{
+    color: #383838;
+}
+.header-button button{
+    margin-top: -3px;
+    margin-right: -3px;
+    font-size: 24px;
+    height: 64px;
+    width: 192px;
+    color: #FFFFFF;
+    background-color: #3077C6;
+}
+
+.button-blue{
+    font-size: 18px;
+    width: 128px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border: 1px solid #3077C6;
+    border-radius: 8px;
+    color: #3077C6;
+}
+
+

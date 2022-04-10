@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
-import logo from '../../logo.svg';
-
+import React from 'react';
 import './Header.css';
+import TopForm from './TopForm/TopForm';
+import HeaderApps from './HeaderApps/HeaderApps';
+import Navigate from './Navigate/Navigate';
+import TopText from "./TopText/TopText";
 
-class Header extends Component {
-    render() {
-        return(
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
+const Header = () => {
+        return (
+            <header className="header">
+            <div className="header-content">
+                <Navigate />
+                <TopText />
+                <TopForm />
+                <HeaderApps />
+            </div>
             </header>
-        )
-    }
+        );
 }
 
 export default Header;

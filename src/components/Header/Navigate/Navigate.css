@@ -1,0 +1,61 @@
+.header-logo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 196px;
+    padding-right: 5px;
+}
+.header-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header-links{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-right: 24px;
+}
+.header-links p {
+    padding-right: 24px;
+}
+
+
+
+
+@keyframes underline-stays-animation{
+    0% {width: 0px;}
+    100% {width: 50px;}
+}
+.underline-stays:hover::before{
+    content: "";
+    padding-bottom: 38px;
+    left: 5px;
+    position: absolute;
+    border-bottom: 4px solid #F5BD41;
+    animation-name: underline-stays-animation;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+}
+
+@keyframes underline-attractions-animation{
+    0% {width: 0px;}
+    100% {width: 112px;}
+}
+.underline-attractions:hover::before{
+    content: "";
+    padding-bottom: 36px;
+    left: 86px;
+    position: absolute;
+    border-bottom: 4px solid #F5BD41;
+    animation-name: underline-attractions-animation;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+}
+
+
+.header-img{
+    display: flex;
+    align-items: center;
+    width: 94px;
+    justify-content: space-between;
+}

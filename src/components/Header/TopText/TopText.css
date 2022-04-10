@@ -1,0 +1,8 @@
+.font-bold h1{
+    font-size: 50px;
+    margin-bottom: 145px;
+}
+.font-bold{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
