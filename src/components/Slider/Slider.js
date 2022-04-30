@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import './Slider.css';
-import data from './dataSlider';
 import BtnSlider from './BtnSlider';
 import SliderCard from './SliderCard/SliderCard';
 
-export default function Slider () {
+export default function Slider({data}) {
     const picturesOnView = 4;
     const [slideIndex, setSlideIndex] = useState(0)
     const nextSlide = () => {
@@ -14,7 +13,7 @@ export default function Slider () {
     };
 
     const prevSlide = () => {
-        if(slideIndex > 0){
+        if (slideIndex > 0) {
             setSlideIndex(slideIndex - 1)
         }
     };
@@ -23,14 +22,14 @@ export default function Slider () {
         <div className="container-slider">
             {
                 data.slice(slideIndex, picturesOnView + slideIndex).map((obj) => {
-                return (
-                    <div className="slide" >
-                        <SliderCard {...obj} />
-                    </div>
-                )
+                    return (
+                        <div className="slide">
+                            <SliderCard {...obj} />
+                        </div>
+                    )
                 })
             }
-            <BtnSlider moveSlide={nextSlide} direction="next" />
+            <BtnSlider moveSlide={nextSlide} direction="next"/>
             <BtnSlider moveSlide={prevSlide} direction="prev"/>
         </div>
     )

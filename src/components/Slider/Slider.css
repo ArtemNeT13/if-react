@@ -52,11 +52,9 @@
 .prev {
     top: 25%;
     left: -15px;
-    transform: translateY(-50%);
 }
 .next {
     position: absolute;
     top: 25%;
     right: -35px;
-    transform: translateY(-50%);
 }

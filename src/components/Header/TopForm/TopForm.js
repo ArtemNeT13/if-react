@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import data from './dataTopForm';
 import './TopForm.css';
 
-const TopForm = () => {
+const TopForm = ({setFindValue}) => {
+
+    const [query, setQuery] = useState();
+
+    const handleClick = (e) =>{
+        e.preventDefault();
+        let filterArray = data.filter(index =>{
+            if(index.name.toLowerCase().includes(query?.toLowerCase())||
+            index.city.toLowerCase().includes(query?.toLowerCase())||
+            index.country.toLowerCase().includes(query?.toLowerCase())) {
+                return index;
+            }
+        })
+        setFindValue(filterArray);
+}
+
     return (
         <div className="form-search col-sm-12">
             <form className="header-search col-xl-12 col-sm-12">
@@ -12,7 +27,10 @@ const TopForm = () => {
                         <label>Your destination or hotel name</label>
                     </div>
                     <div className="input-block">
-                        <input id="searchHeader" type="text" name="search-input" placeholder="New York" />
+                        <input
+                        id="searchHeader" type="text" name="search-input" placeholder="New York"
+                        onChange={(event) => setQuery(event.target.value)}
+                        />
                     </div>
                 </div>
                 <div className="search-data col-sm-12">
@@ -106,7 +124,7 @@ const TopForm = () => {
                     </div>
                 </div>
                 <div className="header-button col-sm-12">
-                    <button id="btnSearchHeader" className="button-blue ">Search</button>
+                    <button onClick={handleClick} className="button-blue ">Search</button>
                 </div>
             </form>
         </div>
