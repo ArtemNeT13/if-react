@@ -1,0 +1,8 @@
+.header-apps{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 120px;
+}
+.header-apps img{
+    margin:0 8px;
+}
