@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     padding-bottom: 120px;
-    max-width: 1240px;
 }
 .container-slider p{
     text-align: left;
@@ -17,7 +16,7 @@
 }
 
 .slide {
-    width: 25%;
+
     height: 100%;
     margin: 0 8px;
     transition: opacity ease-in-out 0.4s;
@@ -56,5 +55,5 @@
 .next {
     position: absolute;
     top: 25%;
-    right: -35px;
+    right: -15px;
 }

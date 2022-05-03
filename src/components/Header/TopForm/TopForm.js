@@ -1,32 +1,18 @@
-import React, {useState, useEffect} from 'react';
-// import data from './dataTopForm';
+import React, {useState} from 'react';
 import './TopForm.css';
 
-const TopForm = ({setFindValue}) = () => {
+const TopForm = ({setFindValue}) => {
     const [query, setQuery] = useState();
-    const [dataGet, setDataGet] = useState([]);
 
-    useEffect(() => {
-        fetch("https://fe-student-api.herokuapp.com/api/hotels/popular")
+    const handleSearch = (e) => {
+        e.preventDefault();
+        fetch(`https://fe-student-api.herokuapp.com/api/hotels?search=${query}`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    setDataGet(result);
+                    setFindValue(result);
                 },
             )
-    }, [])
-    console.log(dataGet)
-    const handleClick = (e) => {
-        e.preventDefault();
-        let filterArray = dataGet.filter(index => {
-            if (index.name.toLowerCase().includes(query?.toLowerCase()) ||
-                index.city.toLowerCase().includes(query?.toLowerCase()) ||
-                index.country.toLowerCase().includes(query?.toLowerCase())) {
-                return index;
-            }
-
-        })
-        setFindValue(filterArray);
     }
 
     return (
@@ -135,7 +121,7 @@ const TopForm = ({setFindValue}) = () => {
                     </div>
                 </div>
                 <div className="header-button col-sm-12">
-                    <button onClick={handleClick} className="button-blue ">Search</button>
+                    <button onClick={handleSearch} className="button-blue ">Search</button>
                 </div>
             </form>
         </div>
