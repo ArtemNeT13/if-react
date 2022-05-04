@@ -4,6 +4,7 @@ import BtnSlider from './BtnSlider';
 import SliderCard from './SliderCard/SliderCard';
 
 export default function Slider({data}) {
+
     const picturesOnView = 4;
     const [slideIndex, setSlideIndex] = useState(0)
     const nextSlide = () => {

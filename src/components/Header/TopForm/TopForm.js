@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
-import data from './dataTopForm';
+import React, {useState} from 'react';
 import './TopForm.css';
 
 const TopForm = ({setFindValue}) => {
-
     const [query, setQuery] = useState();
 
-    const handleClick = (e) =>{
+    const handleSearch = (e) => {
         e.preventDefault();
-        let filterArray = data.filter(index =>{
-            if(index.name.toLowerCase().includes(query?.toLowerCase())||
-            index.city.toLowerCase().includes(query?.toLowerCase())||
-            index.country.toLowerCase().includes(query?.toLowerCase())) {
-                return index;
-            }
-        })
-        setFindValue(filterArray);
-}
+        fetch(`https://fe-student-api.herokuapp.com/api/hotels?search=${query}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setFindValue(result);
+                },
+            )
+    }
 
     return (
         <div className="form-search col-sm-12">
             <form className="header-search col-xl-12 col-sm-12">
                 <div className="search-block col-sm-12">
                     <div className="label-block">
-                        <img src={require("../../../images/Vector.svg").default} alt="vector" />
+                        <img src={require("../../../images/Vector.svg").default} alt="vector"/>
                         <label>Your destination or hotel name</label>
                     </div>
                     <div className="input-block">
                         <input
-                        id="searchHeader" type="text" name="search-input" placeholder="New York"
-                        onChange={(event) => setQuery(event.target.value)}
+                            id="searchHeader" type="text" name="search-input" placeholder="New York"
+                            onChange={(event) => setQuery(event.target.value)}
                         />
                     </div>
                 </div>
@@ -47,12 +44,12 @@ const TopForm = ({setFindValue}) => {
                         <input className="col-sm-6"
                                type="text"
                                name="data-in"
-                               placeholder="Tue 15 Sept" />
+                               placeholder="Tue 15 Sept"/>
                         <span>—</span>
                         <input className="col-sm-6"
                                type="text"
                                name="data-out"
-                               placeholder="Sat 19 Sept" />
+                               placeholder="Sat 19 Sept"/>
                     </div>
                 </div>
                 <div className="filter-block col-sm-12">
@@ -63,18 +60,18 @@ const TopForm = ({setFindValue}) => {
                         <input id="filter-input-adults"
                                type="text"
                                name="filter-adults"
-                               value="2 Adults" />
+                               value="2 Adults"/>
                         <span>—</span>
                         <input id="filter-input-children"
                                type="text"
                                name="filter-children"
                                className="filter-children"
-                               value="0 Children" />
+                               value="0 Children"/>
                         <span>—</span>
                         <input id="filter-input-rooms"
                                type="text"
                                name="filter-room"
-                               value="1 Room" />
+                               value="1 Room"/>
                     </div>
 
 
@@ -84,21 +81,21 @@ const TopForm = ({setFindValue}) => {
                             <div className="filter-values-members">
                                 <p>Adults</p>
                                 <div id="counter-adults-minus" className="color-value-active">-</div>
-                                <input type="text" id="adults-value" value="2" />
+                                <input type="text" id="adults-value" value="2"/>
                                 <div id="counter-adults-plus" className="color-value-active">+</div>
                             </div>
 
                             <div className="filter-values-members">
                                 <p>Children</p>
                                 <div id="counter-children-minus" className="color-value-inactive">-</div>
-                                <input type="text" id="children-value" value="0" />
+                                <input type="text" id="children-value" value="0"/>
                                 <div id="counter-children-plus" className="color-value-active">+</div>
                             </div>
 
                             <div className="filter-values-members">
                                 <p>Rooms</p>
                                 <div id="counter-rooms-minus" className="color-value-inactive">-</div>
-                                <input type="text" id="rooms-value" value="0" />
+                                <input type="text" id="rooms-value" value="0"/>
                                 <div id="counter-rooms-plus" className="color-value-active">+</div>
                             </div>
                         </div>
@@ -124,7 +121,7 @@ const TopForm = ({setFindValue}) => {
                     </div>
                 </div>
                 <div className="header-button col-sm-12">
-                    <button onClick={handleClick} className="button-blue ">Search</button>
+                    <button onClick={handleSearch} className="button-blue ">Search</button>
                 </div>
             </form>
         </div>
