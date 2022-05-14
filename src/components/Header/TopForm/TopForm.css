@@ -197,8 +197,12 @@
     color: #CECECE;
     border: solid #CECECE 1px;
 }
-.parameters-children-age{
+.parameters-children-age-none{
     display: none;
+}
+
+.parameters-children-age{
+    display: flex;
     padding-bottom: 18px;
     width: 259px;
     min-height: 98px;

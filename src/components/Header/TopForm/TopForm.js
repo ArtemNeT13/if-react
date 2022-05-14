@@ -1,7 +1,38 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './TopForm.css';
 
+const max = 5;
+const min = 0;
+
+function HelloWorldComponent() {
+   
+        return <option value={year}>{year} years old</option>;
+
+}
+
+
+
+const useClick = (defaultCount) =>{
+    const [count, setCount] = useState(defaultCount);
+    if (count >= min && count <=max){
+        const handleClickMinus = () => {
+            setCount(count - 1);
+        };
+        const handleClickPlus = () => {
+            setCount(count + 1);
+        };
+        return [count, handleClickMinus, handleClickPlus]
+    } else{
+        // ?????
+    }
+};
+
+
 const TopForm = ({setFindValue}) => {
+    const [countAdults, adultsClickMinus, adultsClickPlus] = useClick(2);
+    const [countChildren, childrenClickMinus, childrenClickPlus]= useClick(0);
+    const [countRooms, roomsClickMinus,roomsClickPlus]= useClick(0);
+
     const [query, setQuery] = useState();
 
     const handleSearch = (e) => {
@@ -14,6 +45,9 @@ const TopForm = ({setFindValue}) => {
                 },
             )
     }
+
+
+
 
     return (
         <div className="form-search col-sm-12">
@@ -29,6 +63,8 @@ const TopForm = ({setFindValue}) => {
                             onChange={(event) => setQuery(event.target.value)}
                         />
                     </div>
+
+
                 </div>
                 <div className="search-data col-sm-12">
                     <div className="data-label">
@@ -52,54 +88,93 @@ const TopForm = ({setFindValue}) => {
                                placeholder="Sat 19 Sept"/>
                     </div>
                 </div>
+
+
                 <div className="filter-block col-sm-12">
                     <div className="filter-label">
-                        <label id="lable-value">2 Adults — 0 Children — 1 Room</label>
+                        <label id="lable-value">{countAdults} Adults — {countChildren} Children — {countRooms} Room</label>
                     </div>
                     <div className="filter-input">
                         <input id="filter-input-adults"
                                type="text"
                                name="filter-adults"
-                               value="2 Adults"/>
+                               value={countAdults}/>
+                        {/*как добавить текст в value*/}
                         <span>—</span>
                         <input id="filter-input-children"
                                type="text"
                                name="filter-children"
                                className="filter-children"
-                               value="0 Children"/>
+                               value={countChildren}/>
                         <span>—</span>
                         <input id="filter-input-rooms"
                                type="text"
                                name="filter-room"
-                               value="1 Room"/>
+                               value={countRooms}/>
                     </div>
 
 
                     <div className="filter-input-parameters">
                         <div className="filter-values">
 
+
+
                             <div className="filter-values-members">
                                 <p>Adults</p>
-                                <div id="counter-adults-minus" className="color-value-active">-</div>
-                                <input type="text" id="adults-value" value="2"/>
-                                <div id="counter-adults-plus" className="color-value-active">+</div>
+                                <div
+                                    onClick={adultsClickMinus}
+                                    id='counter-adults-minus'
+                                    className={countAdults > 0 ? "color-value-active" : "color-value-inactive"}>-</div>
+                                <input type="text" id="adults-value" value={countAdults}/>
+                                <div
+                                    onClick={adultsClickPlus}
+                                    id="counter-adults-plus"
+                                    className={countAdults < max ? "color-value-active" : "color-value-inactive"}
+                                >+</div>
                             </div>
+
+
 
                             <div className="filter-values-members">
                                 <p>Children</p>
-                                <div id="counter-children-minus" className="color-value-inactive">-</div>
-                                <input type="text" id="children-value" value="0"/>
-                                <div id="counter-children-plus" className="color-value-active">+</div>
+                                <div
+                                    onClick={childrenClickMinus}
+                                    id="counter-children-minus"
+                                    className={countChildren > 0 ? "color-value-active" : "color-value-inactive"}>-</div>
+                                <input type="text" id="children-value" value={countChildren}/>
+                                <div
+                                    onClick={childrenClickPlus}
+                                    id="counter-children-plus"
+                                    className={countChildren < max ? "color-value-active" : "color-value-inactive"}
+                                >+</div>
                             </div>
+
+
 
                             <div className="filter-values-members">
                                 <p>Rooms</p>
-                                <div id="counter-rooms-minus" className="color-value-inactive">-</div>
-                                <input type="text" id="rooms-value" value="0"/>
-                                <div id="counter-rooms-plus" className="color-value-active">+</div>
+                                <div
+                                    onClick={roomsClickMinus}
+                                    id="counter-rooms-minus"
+                                    className={countRooms > 0 ? "color-value-active" : "color-value-inactive"}
+                                >-</div>
+                                <input
+                                    type="text"
+                                    id="rooms-value"
+                                    value={countRooms}/>
+                                <div
+                                    onClick={roomsClickPlus}
+                                    id="counter-rooms-plus"
+                                    className={countRooms < max ? "color-value-active" : "color-value-inactive"}
+                                >+</div>
+
+
                             </div>
                         </div>
-                        <div id="children-select" className="parameters-children-age">
+
+                        <div
+                            id="children-select"
+                            className={countChildren > min ? "parameters-children-age": "parameters-children-age-none"} >
                             <p>What is the age of the child you’re travelling with?</p>
                         </div>
 
