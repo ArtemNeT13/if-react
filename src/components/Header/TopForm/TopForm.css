@@ -53,6 +53,7 @@
 }
 .search-data:hover .data-block{
     display: flex;
+    align-items: center;
 }
 .data-label{
     width: 264px;
@@ -70,7 +71,8 @@
     display: none;
 }
 .data-block input{
-    width: 50%;
+    padding: 0 4px;
+    width: 100%;
     font-size: 18px;
     color: #383838;
     border: none;
@@ -87,7 +89,6 @@
 }
 .data-block span{
     color: #383838;
-    padding-top: 18px;
 }
 .filter{
     width: 314px;

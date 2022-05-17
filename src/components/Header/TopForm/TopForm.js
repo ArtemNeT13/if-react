@@ -1,20 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import './TopForm.css';
+import DatePicker from "react-datepicker";
 
-const max = 5;
-const min = 0;
+import "react-datepicker/dist/react-datepicker.css";
 
-function HelloWorldComponent() {
-   
-        return <option value={year}>{year} years old</option>;
+const maxAdults = 30;
+const minAdults = 0;
+const maxChildren = 10;
+const minChildren = 0;
+const maxRooms = 30;
+const minRooms = 0;
 
+const addSelectYearChildren = () => {
+    const selectAge = document.getElementById("children-select");
+    const selectAgeChild = document.createElement('select');
+    const maxAge = 17;
+    for (let year = 0; year <= maxAge; year++){
+        selectAgeChild.innerHTML += `<option value=${year}>${year} years old</option>`
+    }
+    selectAge.appendChild(selectAgeChild);
 }
 
-
+const removeSelectYearChildren = () => {
+    const selectAge = document.getElementById("children-select");
+    let removeChildSelector = selectAge.lastChild;
+    selectAge.removeChild(removeChildSelector);
+}
 
 const useClick = (defaultCount) =>{
     const [count, setCount] = useState(defaultCount);
-    if (count >= min && count <=max){
         const handleClickMinus = () => {
             setCount(count - 1);
         };
@@ -22,17 +36,15 @@ const useClick = (defaultCount) =>{
             setCount(count + 1);
         };
         return [count, handleClickMinus, handleClickPlus]
-    } else{
-        // ?????
-    }
 };
-
 
 const TopForm = ({setFindValue}) => {
     const [countAdults, adultsClickMinus, adultsClickPlus] = useClick(2);
     const [countChildren, childrenClickMinus, childrenClickPlus]= useClick(0);
     const [countRooms, roomsClickMinus,roomsClickPlus]= useClick(0);
 
+    const [startDate, setStartDate] = useState(new Date());
+    const [outDate, setOutDate] = useState(new Date());
     const [query, setQuery] = useState();
 
     const handleSearch = (e) => {
@@ -45,9 +57,6 @@ const TopForm = ({setFindValue}) => {
                 },
             )
     }
-
-
-
 
     return (
         <div className="form-search col-sm-12">
@@ -65,6 +74,8 @@ const TopForm = ({setFindValue}) => {
                     </div>
 
 
+
+
                 </div>
                 <div className="search-data col-sm-12">
                     <div className="data-label">
@@ -77,17 +88,25 @@ const TopForm = ({setFindValue}) => {
                     </div>
 
                     <div className="data-block col-sm-12">
-                        <input className="col-sm-6"
-                               type="text"
-                               name="data-in"
-                               placeholder="Tue 15 Sept"/>
+                        <DatePicker
+                            selected={startDate} onChange={(date) => setStartDate(date)}
+                            className="col-sm-6"
+                            type="text"
+                            name="data-in"
+                            placeholder="Tue 15 Sept"/>
                         <span>—</span>
-                        <input className="col-sm-6"
-                               type="text"
-                               name="data-out"
-                               placeholder="Sat 19 Sept"/>
+                        <DatePicker
+                            selected={outDate} onChange={(date) => setOutDate(date)}
+                            className="col-sm-6"
+                            type="text"
+                            name="data-out"
+                            placeholder="Sat 19 Sept"/>
                     </div>
                 </div>
+
+
+
+
 
 
                 <div className="filter-block col-sm-12">
@@ -98,99 +117,109 @@ const TopForm = ({setFindValue}) => {
                         <input id="filter-input-adults"
                                type="text"
                                name="filter-adults"
-                               value={countAdults}/>
-                        {/*как добавить текст в value*/}
+                               value={countAdults + ' Adults'}/>
                         <span>—</span>
                         <input id="filter-input-children"
                                type="text"
                                name="filter-children"
                                className="filter-children"
-                               value={countChildren}/>
+                               value={countChildren + ' Children'}/>
                         <span>—</span>
                         <input id="filter-input-rooms"
                                type="text"
                                name="filter-room"
-                               value={countRooms}/>
+                               value={countRooms + ' Rooms'}/>
                     </div>
 
 
                     <div className="filter-input-parameters">
                         <div className="filter-values">
-
-
-
                             <div className="filter-values-members">
                                 <p>Adults</p>
-                                <div
-                                    onClick={adultsClickMinus}
+                                <button
+                                    disabled={countAdults <= minAdults}
+                                    onClick={event =>{
+                                        event.preventDefault();
+                                        adultsClickMinus();
+                                    }}
                                     id='counter-adults-minus'
-                                    className={countAdults > 0 ? "color-value-active" : "color-value-inactive"}>-</div>
+                                    className={countAdults > 0 ? "color-value-active" : "color-value-inactive"}>-</button>
                                 <input type="text" id="adults-value" value={countAdults}/>
-                                <div
-                                    onClick={adultsClickPlus}
+                                <button
+                                    disabled={countAdults >= maxAdults}
+                                    onClick={event =>{
+                                        event.preventDefault();
+                                        adultsClickPlus();
+                                    }}
                                     id="counter-adults-plus"
-                                    className={countAdults < max ? "color-value-active" : "color-value-inactive"}
-                                >+</div>
+                                    className={countAdults < maxAdults ? "color-value-active" : "color-value-inactive"}
+                                >+</button>
                             </div>
-
-
-
                             <div className="filter-values-members">
                                 <p>Children</p>
-                                <div
-                                    onClick={childrenClickMinus}
+                                <button
+                                    disabled={countChildren <= minChildren}
+                                    onClick={event => {
+                                        event.preventDefault();
+                                        removeSelectYearChildren();
+                                        childrenClickMinus();
+                                    }}
                                     id="counter-children-minus"
-                                    className={countChildren > 0 ? "color-value-active" : "color-value-inactive"}>-</div>
+                                    className={countChildren > 0 ? "color-value-active" : "color-value-inactive"}>-</button>
                                 <input type="text" id="children-value" value={countChildren}/>
-                                <div
-                                    onClick={childrenClickPlus}
+                                <button
+                                    disabled={countChildren >= maxChildren}
+                                    onClick={event => {
+                                        event.preventDefault();
+                                        addSelectYearChildren();
+                                        childrenClickPlus();
+                                    }}
                                     id="counter-children-plus"
-                                    className={countChildren < max ? "color-value-active" : "color-value-inactive"}
-                                >+</div>
+                                    className={countChildren < maxChildren ? "color-value-active" : "color-value-inactive"}
+                                >+</button>
                             </div>
-
-
-
                             <div className="filter-values-members">
                                 <p>Rooms</p>
-                                <div
-                                    onClick={roomsClickMinus}
+                                <button
+                                    disabled={countRooms <= minRooms}
+                                    onClick={event => {
+                                        event.preventDefault();
+                                        roomsClickMinus();
+                                    }}
                                     id="counter-rooms-minus"
                                     className={countRooms > 0 ? "color-value-active" : "color-value-inactive"}
-                                >-</div>
+                                >-</button>
                                 <input
                                     type="text"
                                     id="rooms-value"
                                     value={countRooms}/>
-                                <div
-                                    onClick={roomsClickPlus}
+                                <button
+                                    disabled={countRooms >= maxRooms}
+                                    onClick={event => {
+                                        event.preventDefault();
+                                        roomsClickPlus();
+                                    }}
                                     id="counter-rooms-plus"
-                                    className={countRooms < max ? "color-value-active" : "color-value-inactive"}
-                                >+</div>
-
-
+                                    className={countRooms < maxRooms ? "color-value-active" : "color-value-inactive"}
+                                >+</button>
                             </div>
                         </div>
-
                         <div
                             id="children-select"
-                            className={countChildren > min ? "parameters-children-age": "parameters-children-age-none"} >
+                            className={countChildren > minChildren ? "parameters-children-age": "parameters-children-age-none"}
+                        >
                             <p>What is the age of the child you’re travelling with?</p>
                         </div>
-
                     </div>
-
 
                 </div>
                 <div className="filter-input-2 col-sm-12">
                     <div className="col-sm-6">
                         <span>Adults<p>2</p></span>
                     </div>
-
                     <div className="col-sm-6">
                         <span>Children<p>0</p></span>
                     </div>
-
                     <div className="col-sm-6">
                         <span>Rooms<p>1</p></span>
                     </div>
@@ -200,7 +229,6 @@ const TopForm = ({setFindValue}) => {
                 </div>
             </form>
         </div>
-
     );
 }
 
